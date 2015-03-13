@@ -1,8 +1,8 @@
 #ifndef TABLE
 #define TABLE
 
-#include "inttypes.h"
-#include <cstdlib>
+//#include "inttypes.h"
+#include <stdlib.h>
 
 #define DEFAULT_TABLE_LENGTH 1024
 #define DEFAULT_PHASE_MASK DEFAULT_TABLE_LENGTH-1

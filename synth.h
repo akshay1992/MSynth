@@ -1,10 +1,7 @@
 #ifndef SYNTH
 #define SYNTH
 
-#include <inttypes.h>
-#include <cstdlib>
 #include "table.h"
-#include "math.h"
 
 namespace synth{
 
