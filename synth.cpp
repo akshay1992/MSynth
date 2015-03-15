@@ -7,12 +7,21 @@ synth::WavetableSynth::WavetableSynth()
     tbl = NULL;
 }
 
-sample synth::WavetableSynth::freqMod(float freq)
+// TODO: freqMod and setFreq inline. Or any other speed optimization.
+void synth::WavetableSynth::setFreq(float freq)
 {
+    frequency = freq;
     phase_inc = floor( frequency * (double) Tables::length() / SystemSR );
-    return this->tick();
+
+    //     //Frequency division (for control rate)
+//    phase_inc = floor( frequency * (double) Tables::length() / ( SystemSR >> ( (LFState & 0x1) | LF_FREQ_DIV)) );
 }
 
+sample synth::WavetableSynth::freqMod(float freq)
+{
+    setFreq( (frequency + freq) * 0.5);
+    return this->tick();
+}
 
 inline sample synth::WavetableSynth::tick()
 {
@@ -28,10 +37,5 @@ inline sample synth::WavetableSynth::tick()
     return outValue;
 }
 
-void synth::WavetableSynth::setFreq(float freq)
-{
-    frequency = freq;
-    phase_inc = lrint( frequency * (double) Tables::length() / SystemSR );
-}
 
 

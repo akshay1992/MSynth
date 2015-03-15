@@ -33,40 +33,37 @@ sample * gen::tri(int len)
 
 sample * gen::saw(int len)
 {
-    /* Square doesn't *really* have a wavetable. It simple does a comparison between
-     * the current phase and 0.5*table_length and returns either a 1 or 0.
-     *
-     * To avoid an extra division step, 0.5*table_length is stored in the table.
-     */
-    sample *SawTable = (sample* ) malloc(sizeof(sample));
-    *SawTable = len/2.0;
+    sample *SawTable = (sample* ) malloc(sizeof(sample) * len);
+    for (int i=0; i<len; i++)
+    {
+        *(SawTable+i) = 255.0/len * i ;
+    }
     return SawTable;
 }
 
 sample * gen::square(int len)
 {
-    // NOT USED
     sample *SquareTable = (sample* ) malloc(sizeof(sample) * len);
-    for (int i=0; i<len/2.0; i++)
+    for(int i=0; i<len; i++)
     {
-        *SquareTable = sin(2*M_PI*i/len);
+        *(SquareTable+i) = (i<len/2.0) & 255;
     }
     return SquareTable;
 }
 
 //*****************************************************
 
-int Tables::length(void)
-{
-    static int table_length = DEFAULT_TABLE_LENGTH;
-    return table_length;
-}
+//inline int Tables::length(void)
+//{
+//    static int table_length = DEFAULT_TABLE_LENGTH;
+//    return table_length;
+//}
 
-int Tables::phase_mask(void)
-{
-    static int table_length = DEFAULT_PHASE_MASK;
-    return table_length;
-}
+//inline int Tables::phase_mask(void)
+//{
+//    static int phase_mask = DEFAULT_PHASE_MASK;
+//    return phase_mask;
+//}
 
 sample * Tables::sine()
 {

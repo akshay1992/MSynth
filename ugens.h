@@ -3,6 +3,9 @@
 
 #include "synth.h"
 
+// Optimizes square-wave ugen to use lesser memory
+#define SQUAREWAVE_MEMORY_OPTIMIZATION 1
+
 namespace ugen{
 
 class Sine : public synth::WavetableSynth
@@ -36,6 +39,10 @@ class ReverseSaw: public synth::WavetableSynth
 class Square: public synth::WavetableSynth
     {
     public:
+
+#if SQUAREWAVE_MEMORY_OPTIMIZATION == 1
+        int half_length;
+#endif
         Square(float freq);
         sample operator()(void);
     };

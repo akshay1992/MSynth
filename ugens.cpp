@@ -67,14 +67,24 @@ sample ugen::ReverseSaw::operator()(void)
 ugen::Square::Square(float freq)
 {
     setFreq(freq);
-    // Note. This is optimized. See tables.cpp for details on saw table.
-    tbl = Tables::saw();
+    // Note. This is optimized. See table.cpp for details.
+#if SQUAREWAVE_MEMORY_OPTIMIZATION == 1
+    tbl = NULL;
+    half_length = Tables::length()/2;
+#else
+    tbl = Tables::square();
+#endif
 }
 
 sample ugen::Square::operator()(void)
 {
-    sample outValue = ( current_phase <= *tbl );
+#if SQUAREWAVE_MEMORY_OPTIMIZATION == 1
+    sample outValue = ( current_phase <= half_length );
     current_phase += phase_inc;
     current_phase = current_phase & Tables::phase_mask();
     return outValue;
+#else
+    return tick();
+#endif
+
 }
