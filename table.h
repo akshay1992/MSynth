@@ -1,7 +1,6 @@
 #ifndef TABLE
 #define TABLE
 
-//#include "inttypes.h"
 #include <stdlib.h>
 
 #define DEFAULT_TABLE_LENGTH 1024
@@ -10,10 +9,8 @@
 // TODO: Frequency division of sample rate (for control rate) - Comments in synth and ugens.
 #define LF_FREQ_DIV 2
 
-// Global Sample Rate
 #define SystemSR 16000
-
-typedef unsigned int sample;
+typedef unsigned char sample;
 
 namespace gen {
     // Table filling functions
