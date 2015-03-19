@@ -9,17 +9,6 @@ Author: Akshay Cadambi (akshay19.92@gmail.com)
 
 #include "MSynth.h"
 
-// Different from traditional 'loop' function in arduino sketches. 
-sample audioLoop(void)
-{	
-	sample out; 			// To hold the output. Pass all audio to this variable.
-
-	// This is where the audio code goes. 
-
-	return out;
-}
-
-
 void setup()
 {
 	// Setup code
@@ -29,4 +18,15 @@ void setup()
 void loop()
 {
 	// Regular loop code. 
+}
+
+// This is another loop where you put only the audio stuff.
+ 
+sample audioLoop(void)
+{	
+	sample out; 			// To hold the output. Pass all audio to this variable.
+
+	// This is where the audio code goes. 
+
+	return out;
 }
