@@ -3,7 +3,7 @@ MSynth
 #####A modular synthesis library for Arduino. 
 Author: Akshay Cadambi
 
-MSynth was designed to make modular synthesis on the arduino simple and easy to use. It tries to combine the idea of SynthDefs, like in [SuperCollider](http://supercollider.sourceforge.net/) with [Gamma](http://mat.ucsb.edu/gamma/)'s simple syntax that is a result of it's per-sample processing architecture. 
+MSynth was designed to make modular synthesis on the arduino simple and easy to use. It tries to combine the idea of SynthDefs as seen in [SuperCollider](http://supercollider.sourceforge.net/) with [Gamma](http://mat.ucsb.edu/gamma/)'s simple syntax that is a result of it's per-sample processing architecture. 
 
 The intent of this project was to make the sketch code as decluttered as possible, and yet, have the ability to work with powerful modular-synthesis tools. 
 
