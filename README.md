@@ -25,7 +25,7 @@ Please see examples for a step-by-step instructions of how to use MSynth.
 
 ######Caveats:
 * Uses Timer1. You can no longer use the `Servo Library` or any other library that makes use of Timer1.
-* 
+
 ######Features (future)
 * Control Rate ISR system. 
 * Envelopes: Linear, exponential. 
