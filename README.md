@@ -19,19 +19,20 @@ Please see examples for a step-by-step instructions of how to use MSynth.
 * Wavetable based oscillators: Sine, Triangle, Saw, Reverse-Saw, Square
 * Amplitude and Frequency modulation. 
 * Custom synth definitions to connect oscillators in any manner. 
-* Per-sample processing at 16kHz.
-* 8-bit audio. 
+* Audio Rate ISR for per-sample processing at 16kHz.
+* 8-bit dynamic range.
 * Uses the `TimerOne` library (included in the source). 
 
+######Caveats:
+* Uses Timer1. You can no longer use the `Servo Library` or any other library that makes use of Timer1.
+* 
 ######Features (future)
-* Control Rate / Audio Rate ISR system. 
+* Control Rate ISR system. 
 * Envelopes: Linear, exponential. 
 * Control Rate Amplitude and frequency modulation.
 * Filters, effects, etc.
 
-######Caveats:
-* Uses Timer1. You can no longer use the `Servo Library` or any other library that makes use of Timer1.
-
 ------
 This project was conceived as a part of the *240B: Audio Synthesis and Processing* course at the Media, Arts and Technology Program, UC Santa Barbara.
+
 Contact: akshay19.92@gmail.com
