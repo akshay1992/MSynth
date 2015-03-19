@@ -66,4 +66,6 @@ class TimerOne
     void (*isrCallback)();
 };
 
+extern TimerOne Timer1;
+
 #endif

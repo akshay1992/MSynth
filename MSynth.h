@@ -16,51 +16,59 @@
 
 #include "TimerOne.h"
 #include "ugens.h"
+#include "wiring_private.h"
 
 #define AUDIO_OUTPUT_REGISTER OCR1A
 
 using namespace ugen;
 
 // This function will defined by the user in the Ardunino Sketch
-inline sample audioLoop(void);
+sample audioLoop(void);
 
-inline void audioISR(void){
-    /*
-     * Writes audio to port.
-     * This function is called by the Timer1 Routine within MSynthMaster
-     * This is simply an non-exposed alias for audioLoop()
-     * */
+inline void audioISR(void)
+{
+   /*
+    * Writes audio to port.
+    * This is the default audio-rate ISR and is a 'hidden' alias for audioLoop()
+    * Set within MSynthMaster.
+    *
+    * TODO: Add a global DC_OFFSET for easier amplitude modulation
+    * */
 
-    // TODO: Range conversion
     AUDIO_OUTPUT_REGISTER = audioLoop();
 }
+
 
 class MSynthMaster
 {
     /*
      * Used to automate the ISR and provide an interface between the sketch
      * and the backend.
-     *
-     * Note:
-     *  The interrupt service routine MUST be the audioISR defined in this file.
      * */
 public:
     MSynthMaster(void)
     {
-        _ISRfrequency = SystemSR; // SystemSR is defined in table.h
-        initTimer();
+        _ISRfrequency = SystemSR;
     }
 
-    void initTimer()
+    MSynthMaster(long int SR)
     {
-        int ISRPeriod_inMicroseconds = 1000000 / (double) _ISRfrequency ;
-        Timer1.initialize( ISRPeriod_inMicroseconds );
-        Timer1.attachInterrupt( audioISR );
+        // TODO: Find a way to integrate this into everything
+        // This doesn't really affect the oscillators yet.
+        _ISRfrequency = SR;
     }
 
-private:
-    long int _ISRfrequency;
-    TimerOne Timer1;
+    void init(void)
+    {
+        long int ISRPeriod_inMicroseconds = 1000000 / (double) _ISRfrequency ;
+
+        pinMode(9, OUTPUT);
+        Timer1.initialize( ISRPeriod_inMicroseconds );
+        Timer1.attachInterrupt(audioISR);
+        sbi(TCCR1A, COM1A1);                // Associates Pin 9 with the Timer1 Output
+    }
+
+    long int _ISRfrequency;                 // Audio Rate
 
 } MSynth;
 
