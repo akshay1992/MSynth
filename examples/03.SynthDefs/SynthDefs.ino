@@ -8,6 +8,8 @@ MSynth: A modular-synthesis library for Arduino
 Author: Akshay Cadambi (akshay19.92@gmail.com)
 */
 
+#include "MSynth.h"
+
 void setup()
 {
     MSynth.init();
