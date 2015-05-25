@@ -2,12 +2,15 @@
 #include <math.h>
 #include <stdlib.h>
 
+#define DC 0
+#define PEAK 127
+
 sample * gen::sine(int len)
 {
     sample *SineTable = (sample* ) malloc(sizeof(sample) * len);
     for (int i=0; i<len; i++)
     {
-        *(SineTable+i) = 128 + 127 * sin(2*M_PI*i/len);
+        *(SineTable+i) = DC + PEAK* sin(2*M_PI*i/len);
     }
     return SineTable;
 }
@@ -17,15 +20,15 @@ sample * gen::tri(int len)
     sample *TriTable = (sample* ) malloc(sizeof(sample) * len);
     for (int i=0 ; i<=len/4; i++)
     {
-        TriTable[i] = 128 + 127*4.0/len * i;
+        TriTable[i] = DC + PEAK*4.0/len * i;
     }
     for (int i=1; i<=len/2; i++)
     {
-        TriTable[i + len/4] = 255 - 255*2.0/len * i;
+        TriTable[i + len/4] = (DC+PEAK) - (PEAK)*4.0/len * i;
     }
     for (int i=1; i<=len/4; i++)
     {
-        TriTable[i + 3*len/4] = 127*4.0/len * i;
+        TriTable[i + 3*len/4] = PEAK*4.0/len * i + (DC-PEAK);
     }
 
     return TriTable;
@@ -36,7 +39,7 @@ sample * gen::saw(int len)
     sample *SawTable = (sample* ) malloc(sizeof(sample) * len);
     for (int i=0; i<len; i++)
     {
-        *(SawTable+i) = 255.0/len * i ;
+        *(SawTable+i) = (20.*PEAK)/len * i + (DC-PEAK) ;
     }
     return SawTable;
 }
@@ -44,9 +47,11 @@ sample * gen::saw(int len)
 sample * gen::square(int len)
 {
     sample *SquareTable = (sample* ) malloc(sizeof(sample) * len);
-    for(int i=0; i<len; i++)
+    for(int i=0; i<=len/2; i++)
     {
-        *(SquareTable+i) = (i<len/2.0) & 255;
+        *(SquareTable+i) = DC+PEAK;
+        *(SquareTable+i+i/2) = DC-PEAK;
+
     }
     return SquareTable;
 }
