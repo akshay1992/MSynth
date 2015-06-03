@@ -4,7 +4,7 @@
 #include "synth.h"
 
 // Optimizes square-wave ugen to use lesser memory
-#define SQUAREWAVE_MEMORY_OPTIMIZATION 1
+#define SQUAREWAVE_OPTIMIZE_MEMORY
 
 namespace ugen{
 
@@ -40,7 +40,7 @@ class Square: public synth::WavetableSynth
     {
     public:
 
-#if SQUAREWAVE_MEMORY_OPTIMIZATION == 1
+#ifdef SQUAREWAVE_OPTIMIZE_MEMORY
         int half_length;
 #endif
         Square(float freq);

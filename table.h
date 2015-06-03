@@ -6,6 +6,9 @@
 #define DEFAULT_TABLE_LENGTH 1024
 #define DEFAULT_PHASE_MASK DEFAULT_TABLE_LENGTH-1
 
+#define TABLE_DC 0
+#define TABLE_PEAK 127
+
 // TODO: Frequency division of sample rate (for control rate) - Comments in synth and ugens.
 #define LF_FREQ_DIV 2
 

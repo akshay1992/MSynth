@@ -68,7 +68,7 @@ ugen::Square::Square(float freq)
 {
     setFreq(freq);
     // Note. This is optimized. See table.cpp for details.
-#if SQUAREWAVE_MEMORY_OPTIMIZATION == 1
+#ifdef SQUAREWAVE_OPTIMIZE_MEMORY
     tbl = NULL;
     half_length = Tables::length()/2;
 #else
@@ -78,8 +78,8 @@ ugen::Square::Square(float freq)
 
 sample ugen::Square::operator()(void)
 {
-#if SQUAREWAVE_MEMORY_OPTIMIZATION == 1
-    sample outValue = ( current_phase <= half_length );
+#ifdef SQUAREWAVE_OPTIMIZE_MEMORY
+    sample outValue = ( current_phase <= half_length ) ? (TABLE_DC+TABLE_PEAK) : (TABLE_DC-TABLE_PEAK);
     current_phase += phase_inc;
     current_phase = current_phase & Tables::phase_mask();
     return outValue;
