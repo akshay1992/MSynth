@@ -13,7 +13,7 @@
 #define LF_FREQ_DIV 2
 
 #define SystemSR 16000
-typedef int8_t sample;
+typedef char sample;
 
 namespace gen {
     // Table filling functions
