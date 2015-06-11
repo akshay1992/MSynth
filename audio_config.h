@@ -51,7 +51,10 @@ public:
     {
         int number = (s.value*value);
         number /= 128;
-        return sample(number);
+        if (number==128)    // Accounts for -128*-128
+            return sample(127);
+        else
+            return sample(number);
     }
 };
 
