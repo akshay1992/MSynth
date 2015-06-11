@@ -13,10 +13,10 @@
 
 namespace gen {
     // Table filling functions
-    sample *sine(int len);
-    sample *tri(int len);
-    sample *saw(int len);
-    sample *square(int len);
+    sampleData *sine(int len);
+    sampleData *tri(int len);
+    sampleData *saw(int len);
+    sampleData *square(int len);
 }
 
 namespace Tables{
@@ -38,10 +38,10 @@ namespace Tables{
     // Table containers:
     // These funcitons return singletons of a table
 
-    sample * sine();
-    sample * tri();
-    sample * saw();
-    sample * square();
+    sampleData * sine();
+    sampleData * tri();
+    sampleData * saw();
+    sampleData * square();
 
 }
 

@@ -8,14 +8,14 @@ namespace synth{
 
 //const float MIN_WAVETABLE_FREQ = SystemSR/Tables::length();
 
-class WavetableSynth
-    {
+class WavetableSynth : public sample
+{
     public:
         float frequency;
         float phase;
         int current_phase;
         int phase_inc;
-        sample *tbl;
+        sampleData *tbl;
 
         WavetableSynth();
         void setFreq(float freq);
