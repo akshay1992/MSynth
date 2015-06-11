@@ -30,14 +30,28 @@ public:
     {
         int result = s.value+value;
         result = result/2;
-        return sample((char)result);
+        return sample(result);
+    }
+
+    sample operator-()
+    {
+        value = -value;
+        return *this;
+    }
+
+    sample operator-(sample s)
+    {
+        if ((this->value*s.value)>=0)
+            return sample(value - s.value);
+        else
+            return sample((value - s.value) / 2);
     }
 
     sample operator*(sample s)
     {
         int number = (s.value*value);
         number /= 128;
-        return sample((char)number);
+        return sample(number);
     }
 };
 
