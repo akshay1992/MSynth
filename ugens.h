@@ -7,7 +7,7 @@
 // Optimizes square-wave ugen to use lesser memory
 #define SQUAREWAVE_OPTIMIZE_MEMORY
 
-namespace ugen{
+namespace synth{
 
 class Sine : public synth::WavetableSynth
     {

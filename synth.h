@@ -15,7 +15,7 @@ class WavetableSynth : public sample
         float phase;
         int current_phase;
         int phase_inc;
-        sampleData *tbl;
+        sample8 *tbl;
 
         WavetableSynth();
         void setFreq(float freq);

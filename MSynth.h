@@ -15,12 +15,15 @@
  * */
 
 #include "TimerOne.h"
-#include "ugens.h"
 #include "wiring_private.h"
+
+#include "ugens.h"
+#include "envelope.h"
 
 #define AUDIO_OUTPUT_REGISTER OCR1A
 
-using namespace ugen;
+using namespace synth;
+using namespace control;
 
 // This function will defined by the user in the Ardunino Sketch
 sample audioLoop(void);

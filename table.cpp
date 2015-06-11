@@ -2,9 +2,9 @@
 #include <math.h>
 #include <stdlib.h>
 
-sampleData * gen::sine(int len)
+sample8 * gen::sine(int len)
 {
-    sampleData *SineTable = (sampleData* ) malloc(sizeof(sampleData) * len);
+    sample8 *SineTable = (sample8* ) malloc(sizeof(sample8) * len);
     for (int i=0; i<len; i++)
     {
         *(SineTable+i) = TABLE_DC + TABLE_PEAK* sin(2*M_PI*i/len);
@@ -12,9 +12,9 @@ sampleData * gen::sine(int len)
     return SineTable;
 }
 
-sampleData * gen::tri(int len)
+sample8 * gen::tri(int len)
 {
-    sampleData *TriTable = (sampleData* ) malloc(sizeof(sampleData) * len);
+    sample8 *TriTable = (sample8* ) malloc(sizeof(sample8) * len);
     for (int i=0 ; i<=len/4; i++)
     {
         TriTable[i] = TABLE_DC + TABLE_PEAK*4.0/len * i;
@@ -31,9 +31,9 @@ sampleData * gen::tri(int len)
     return TriTable;
 }
 
-sampleData * gen::saw(int len)
+sample8 * gen::saw(int len)
 {
-    sampleData *SawTable = (sampleData* ) malloc(sizeof(sampleData) * len);
+    sample8 *SawTable = (sample8* ) malloc(sizeof(sample8) * len);
     for (int i=0; i<len; i++)
     {
         *(SawTable+i) = (2.0*TABLE_PEAK)/len * i + (TABLE_DC-TABLE_PEAK) ;
@@ -41,9 +41,9 @@ sampleData * gen::saw(int len)
     return SawTable;
 }
 
-sampleData * gen::square(int len)
+sample8 * gen::square(int len)
 {
-    sampleData *SquareTable = (sampleData* ) malloc(sizeof(sampleData) * len);
+    sample8 *SquareTable = (sample8* ) malloc(sizeof(sample8) * len);
     for(int i=0; i<=len/2; i++)
     {
         *(SquareTable+i) = TABLE_DC+TABLE_PEAK;
@@ -66,9 +66,9 @@ sampleData * gen::square(int len)
 //    return phase_mask;
 //}
 
-sampleData * Tables::sine()
+sample8 * Tables::sine()
 {
-    static sampleData* tbl_sine;
+    static sample8* tbl_sine;
 
     if (tbl_sine == NULL)
        {
@@ -77,9 +77,9 @@ sampleData * Tables::sine()
        return tbl_sine;
 }
 
-sampleData * Tables::tri()
+sample8 * Tables::tri()
 {
-    static sampleData* tbl_tri;
+    static sample8* tbl_tri;
 
     if (tbl_tri == NULL)
        {
@@ -88,9 +88,9 @@ sampleData * Tables::tri()
        return tbl_tri;
 }
 
-sampleData * Tables::saw()
+sample8 * Tables::saw()
 {
-    static sampleData* tbl_saw;
+    static sample8* tbl_saw;
 
     if (tbl_saw == NULL)
        {
@@ -99,9 +99,9 @@ sampleData * Tables::saw()
        return tbl_saw;
 }
 
-sampleData * Tables::square()
+sample8 * Tables::square()
 {
-    static sampleData* tbl_square;
+    static sample8* tbl_square;
 
     if (tbl_square == NULL)
        {

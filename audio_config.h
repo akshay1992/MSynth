@@ -1,12 +1,16 @@
 #ifndef AUDIO_CONFIG
 #define AUDIO_CONFIG
 
+#include "inttypes.h"
+
 // TODO: Frequency division of sample rate (for control rate) - Comments in synth and ugens.
 #define LF_FREQ_DIV 2
 
 #define SystemSR 16000
 
-typedef char sampleData ; // Default signed 8-bit audio
+typedef int8_t sample8 ; // Default signed 8-bit audio
+typedef uint8_t control8;   // For 8-bit unsigned operations
+typedef uint16_t control16; // For 16-bit unsigned operations
 
 class sample
 {
@@ -14,7 +18,7 @@ class sample
      * An alias for sampleData that takes care of all operations
      */
 public:
-    sampleData value;
+    sample8 value;
     sample(void){value=0;}
     sample(char val)
     {

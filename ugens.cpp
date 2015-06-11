@@ -3,13 +3,13 @@
 
 //--------------------------------------------
 
-ugen::Sine::Sine(float freq)
+synth::Sine::Sine(float freq)
 {
     setFreq(freq);
     tbl = Tables::sine();
 }
 
-sample ugen::Sine::operator()(void)
+sample synth::Sine::operator()(void)
 {
     return tick();
 }
@@ -17,13 +17,13 @@ sample ugen::Sine::operator()(void)
 
 //--------------------------------------------
 
-ugen::Tri::Tri(float freq)
+synth::Tri::Tri(float freq)
 {
     setFreq(freq);
     tbl = Tables::tri();
 }
 
-sample ugen::Tri::operator()(void)
+sample synth::Tri::operator()(void)
 {
     return tick();
 }
@@ -31,26 +31,26 @@ sample ugen::Tri::operator()(void)
 
 //--------------------------------------------
 
-ugen::Saw::Saw(float freq)
+synth::Saw::Saw(float freq)
 {
     setFreq(freq);
     tbl = Tables::saw();
 }
 
-sample ugen::Saw::operator()(void)
+sample synth::Saw::operator()(void)
 {
     return tick();
 }
 
 //--------------------------------------------
 
-ugen::ReverseSaw::ReverseSaw(float freq)
+synth::ReverseSaw::ReverseSaw(float freq)
 {
     setFreq(freq);
     tbl = Tables::saw();
 }
 
-sample ugen::ReverseSaw::operator()(void)
+sample synth::ReverseSaw::operator()(void)
 {
     /* This is a neat little trick. It simply reverses the indexing of the saw
      * table to give the reverse saw.
@@ -64,7 +64,7 @@ sample ugen::ReverseSaw::operator()(void)
 
 //--------------------------------------------
 
-ugen::Square::Square(float freq)
+synth::Square::Square(float freq)
 {
     setFreq(freq);
     // Note. This is optimized. See table.cpp for details.
@@ -76,7 +76,7 @@ ugen::Square::Square(float freq)
 #endif
 }
 
-sample ugen::Square::operator()(void)
+sample synth::Square::operator()(void)
 {
 #ifdef SQUAREWAVE_OPTIMIZE_MEMORY
     sample outValue = ( current_phase <= half_length ) ? (TABLE_DC+TABLE_PEAK) : (TABLE_DC-TABLE_PEAK);
