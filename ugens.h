@@ -2,6 +2,7 @@
 #define UGENS
 
 #include "synth.h"
+#include "audio_config.h"
 
 // Optimizes square-wave ugen to use lesser memory
 #define SQUAREWAVE_OPTIMIZE_MEMORY

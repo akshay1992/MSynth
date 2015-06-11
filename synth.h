@@ -2,7 +2,7 @@
 #define SYNTH
 
 #include "table.h"
-
+#include "audio_config.h"
 
 namespace synth{
 

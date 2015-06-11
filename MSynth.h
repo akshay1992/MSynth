@@ -35,7 +35,7 @@ inline void audioISR(void)
     * TODO: Add a global DC_OFFSET for easier amplitude modulation
     * */
 
-    AUDIO_OUTPUT_REGISTER = audioLoop();
+    AUDIO_OUTPUT_REGISTER = 128+audioLoop();
 }
 
 
