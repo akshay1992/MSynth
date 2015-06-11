@@ -6,10 +6,13 @@
 
 #define SystemSR 16000
 
-typedef char sampleData ;
+typedef char sampleData ; // Default signed 8-bit audio
 
 class sample
 {
+    /*
+     * An alias for sampleData that takes care of all operations
+     */
 public:
     sampleData value;
     sample(void){value=0;}
@@ -33,13 +36,9 @@ public:
     sample operator*(sample s)
     {
         int number = (s.value*value);
-        number /= 256;
+        number /= 128;
         return sample((char)number);
     }
 };
-
-// Old:
-//typedef char sample;    // Signed 8-bit Audio Sample
-//typedef int sample16;   // Signed 16-bit audio (used behind the scenes for + and * operations)
 
 #endif
