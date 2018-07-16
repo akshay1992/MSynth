@@ -1,15 +1,15 @@
-MSynth KEYWORD1
-sample KEYWORD1
+MSynth	KEYWORD1
+sample	KEYWORD1
 
-Sine KEYWORD1
-Saw KEYWORD1
-ReverseSaw KEYWORD1
-Tri KEYWORD1
-Square KEYWORD1
+Sine	KEYWORD1
+Saw	KEYWORD1
+ReverseSaw	KEYWORD1
+Tri	KEYWORD1
+Square	KEYWORD1
 
-audioLoop KEYWORD2
-WavetableSynth KEYWORD2
-void setFreq KEYWORD2
-sample freqMod KEYWORD2
-virtual sample KEYWORD2
+audioLoop	KEYWORD2
+WavetableSynth	KEYWORD2
+void setFreq	KEYWORD2
+sample freqMod	KEYWORD2
+virtual sample	KEYWORD2
 
